@@ -77,7 +77,7 @@ public class Menu {
             System.out.print("Ingresa una opcion: ");
 
             try {
-                // CORRECCIÓN: Evitar trampa del buffer[cite: 8]
+                // CORRECCIÓN: Evitar trampa del buffer
                 int opcion = Integer.parseInt(scanner.nextLine().trim());
 
                 switch (opcion) {
@@ -98,7 +98,7 @@ public class Menu {
             } catch (NumberFormatException e) {
                 System.out.println("Error: Ingresa el número de la opción que deseas realizar.");
             } catch (IllegalArgumentException e) {
-                // CORRECCIÓN: Atrapa todos los errores del servicio para que no se caiga[cite: 8]
+                // CORRECCIÓN: Atrapa todos los errores del servicio para que no se caiga
                 System.out.println("Error de operación: " + e.getMessage());
             } catch (Exception e) {
                 System.out.println("Error inesperado: " + e.getMessage());
@@ -131,7 +131,7 @@ public class Menu {
         System.out.print("Cédula del cliente a eliminar: ");
         String cedula = scanner.nextLine().trim();
 
-        // CORRECCIÓN: Usa el método del servicio para que respete la regla EN_CAMINO[cite: 15]
+        // CORRECCIÓN: Usa el método del servicio para que respete la regla EN_CAMINO
         domi.eliminarCliente(cedula);
         System.out.println("Cliente eliminado correctamente.");
     }
@@ -191,10 +191,7 @@ public class Menu {
 
         Pedido pedidoCreado = domi.crearPedido(cedula, descripcion, esPedidoGrande);
 
-        System.out.println(String.format("✔ Pedido #%d asignado a %s (%s) · EN_CAMINO",
-                pedidoCreado.getNumero(),
-                pedidoCreado.getRepartidorAsignado().getNombre(),
-                pedidoCreado.getRepartidorAsignado().getTipo()));
+
     }
 
     void entregarPedido() {
@@ -219,8 +216,8 @@ public class Menu {
             System.out.println("No hay pedidos registrados.");
         } else {
             for (Pedido p : listaPedidos) {
-                // CORRECCIÓN: Imprimir los datos reales de la lista[cite: 17]
-                System.out.println(String.format("Pedido #%d | Cliente: %s | Repartidor: %s | Costo: $%,.0f | Tiempo: %.0f min | Estado: %s",
+                // CORRECCIÓN: Imprimir los datos reales de la lista
+                System.out.println(String.format("Pedido #%d | Cliente: %s | Repartidor: %s | Costo:  $%,d| Tiempo: %d min | Estado: %s",
                         p.getNumero(),
                         p.getCliente().getNombre(),
                         p.getRepartidorAsignado().getNombre(),
